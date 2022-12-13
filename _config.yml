@@ -1,3 +1,4 @@
+# fixed
 lsi: false
 safe: true
 incremental: false
@@ -8,4 +9,23 @@ kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
 
+# theme
 remote_theme: just-the-docs/just-the-docs
+
+# from just-the-dooc
+callouts_level: quiet # or loud
+callouts:
+  highlight:
+    color: yellow
+  important:
+    title: Important
+    color: blue
+  new:
+    title: New
+    color: green
+  note:
+    title: Note
+    color: purple
+  warning:
+    title: Warning
+    color: red

@@ -46,7 +46,8 @@ s.at(n)
 operator == != < <= > >=
 ```
 
-*std::string在实际使用中非常低效，尤其是substr返回子串时，这一点在C++17引入了`<stringview>`
+{: .note }
+> std::string在实际使用中非常低效，尤其是substr返回子串时，这一点在C++17引入了`<stringview>`
 
 ## 标准库类型vector
 
