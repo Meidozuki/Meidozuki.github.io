@@ -1,3 +1,8 @@
+---
+layout: page
+permalink: /i/
+---
+
 # I. C and C++
 
 ## C++和C很像
