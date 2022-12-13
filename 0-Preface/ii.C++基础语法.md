@@ -1,4 +1,10 @@
-# tiitle
+---
+layout: page
+title: "PAGE TITLE"
+permalink: /ii/
+---
+
+# title
 
 ## 心态
 

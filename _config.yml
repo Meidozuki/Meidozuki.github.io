@@ -8,4 +8,4 @@ kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
 
-remote_theme: https://github.com/TaylanTatli/Moon
+remote_theme: just-the-docs/just-the-docs
