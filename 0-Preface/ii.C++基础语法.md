@@ -46,6 +46,7 @@ int main()
 
 ## using指示
 
-`using namespace std;`的作用是，将形如`std::cout`的声明全都可以用`cout`的简短化形式调用  
+`using namespace std;`的作用是，将形如`std::cout`的声明全都可以用`cout`的简短化形式调用
+
 {: .note }
 > 在实际项目中不推荐使用，更推荐using声明`using std::cout;`

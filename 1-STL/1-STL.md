@@ -27,7 +27,7 @@ int main()
 ```
 
 std::string的初始化、赋值、拼接
-```
+```cpp
 {
 string s1;
 string s2=s1;
