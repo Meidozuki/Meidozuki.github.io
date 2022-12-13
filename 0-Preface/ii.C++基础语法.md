@@ -1,6 +1,7 @@
 ---
 layout: page
 permalink: /ii/
+title: '0-ii. C++基础语法'
 ---
 
 # ii. New to C++

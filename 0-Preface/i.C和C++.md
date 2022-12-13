@@ -1,6 +1,7 @@
 ---
 layout: page
 permalink: /i/
+title: '0-i. C and C++'
 ---
 
 # I. C and C++

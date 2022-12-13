@@ -58,7 +58,7 @@ operator == != < <= > >=
 `int a[10];`
 
 > 建议：性能高，但需要提前确定长度。用于快速背模板，多维数组等
-> 
+
 2. std::vector
 
 ```
@@ -66,16 +66,17 @@ operator == != < <= > >=
 std::vector<int> a;
 ```
 > 建议：较为通用，在数组大小可变时替代array
-> 
+
 3. C++ std::array
 
 ```
 #include <array>
 std::array<int,10> a;
 ```
-> (since C++11)  
+{: .highlight }
+(since C++11)  
 > 和原生数组几乎一致，但配备了STL的许多通用方法如size,at等
-> 
+
 4. std::list std::deque
 
 ```
