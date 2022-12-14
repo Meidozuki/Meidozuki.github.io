@@ -5,7 +5,7 @@ using std::vector;
 
 void stack_dynamic() {
     //动态数组
-    //优点：vector封装友好，仅需手动实现pop; 同时底层实现也很高效
+    //优点：vector封装友好，仅需手动实现pop; 同时尾部操作底层实现也很高效
     vector<int> s;
 
     auto pop = [&s] () {
