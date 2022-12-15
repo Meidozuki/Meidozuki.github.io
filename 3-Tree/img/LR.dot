@@ -1,0 +1,60 @@
+digraph  {
+    label=LR
+    ranksep=0.25
+    subgraph cluster{
+        label=before
+        a8->a2
+        a8->a9
+        a2->a1
+        a2->a4->a3
+
+        a1[label=1]
+        a2[label=2]
+        a3[label=3,style=dashed]
+        a4[label=4,style=filled,color="#c0c0c0"]
+        a8[label=8]
+        a9[label=9]
+        
+        node[style=invis]
+        edge[style=invis]
+        a4->a5
+        a9->a10
+        
+    }
+    
+    subgraph cluster2{
+        label=after_L
+        b8->b4
+        b8->b9
+        b4->b2->b1
+        b4->b3
+
+        b1[label=1]
+        b2[label=2]
+        b3[label=3,style=dashed]
+        b4[label=4,style=filled,color="#c0c0c0"]
+        b8[label=8,style=filled,color="#808080"]
+        b9[label=9]
+
+        node[style=invis]
+        edge[style=invis]
+        b9->b10
+    }
+
+    subgraph cluster3{
+        label=after_L_R
+        c4->c2
+        c4->c8
+        c8->c9
+        c2->c1
+        c2->c3
+
+        c1[label=1]
+        c2[label=2]
+        c3[label=3,style=dashed]
+        c4[label=4,style=filled,color="#c0c0c0"]
+        c8[label=8,style=filled,color="#808080"]
+        c9[label=9]
+
+    }
+}
