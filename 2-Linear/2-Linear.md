@@ -1,3 +1,8 @@
+---
+layout: page
+permalink: /2/
+---
+
 # 2-线性结构
 
 ## ADT 逻辑结构和物理结构
