@@ -1,0 +1,13 @@
+digraph  {
+    node[style=invis]
+    ranksep = 0.2
+    01
+    02
+    03
+    node[style=none]
+    1->2->3->4
+    edge[style=invis]
+    1->01
+    2->02
+    3->03
+}
