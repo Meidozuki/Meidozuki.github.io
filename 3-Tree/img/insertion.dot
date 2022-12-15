@@ -1,0 +1,10 @@
+digraph  {
+    X->left
+    X->right
+    node[style=dashed]
+    edge[style=dashed]
+    left->LL
+    left->LR
+    right->RL
+    right->RR
+}

@@ -1,0 +1,37 @@
+digraph  {
+    label=R_Rotatioin
+    ranksep=0.25
+    subgraph cluster{
+        label=before
+        X->p
+        X->R_X
+        p->L_p
+        p->R_p
+        L_p[shape=box,height=1]
+        
+        R_X[shape=box]
+        R_p[shape=box]
+        node[style=invis]
+        edge[style=invis]
+        R_X->0
+    }
+    
+    subgraph cluster2{
+        label=after
+        p2->L_p2
+        p2->X2
+        X2->R_p2
+        X2->R_X2
+        L_p2[shape=box,height=1]
+
+        R_X2[label=R_X,shape=box]
+        R_p2[label=R_p,shape=box]
+        X2[label=X]
+        p2[label=p]
+        L_p2[label=L_p]
+
+        node[style=invis]
+        edge[style=invis]
+        L_p2->02
+    }
+}

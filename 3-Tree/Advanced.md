@@ -22,83 +22,9 @@ AVL树中，所有结点的平衡因子因子的绝对值不大于1
 
 AVL树通过一种称为旋转的操作来使失衡的子树重新平衡，分别为左旋和右旋，为了方便起见，记为L旋转和R旋转
 
-```graphviz
-digraph  {
-    label=L_旋转
-    subgraph cluster{
-        label=before
-        X->p
-        X->R_X
-        p->L_p
-        p->R_p
-        L_p[shape=box,height=1]
-        
-        R_X[shape=box]
-        R_p[shape=box]
-        node[style=invis]
-        edge[style=invis]
-        R_X->0
-    }
-    
-    subgraph cluster2{
-        label=after
-        p2->L_p2
-        p2->X2
-        X2->R_p2
-        X2->R_X2
-        L_p2[shape=box,height=1]
+![L旋转](img/L-rot.dot.jpg)
 
-        R_X2[label=R_X,shape=box]
-        R_p2[label=R_p,shape=box]
-        X2[label=X]
-        p2[label=p]
-        L_p2[label=L_p]
-
-        node[style=invis]
-        edge[style=invis]
-        L_p2->02
-    }
-}
-```
-
-```graphviz
-digraph  {
-    label=R_旋转
-    subgraph cluster{
-        label=before
-        X->L_X
-        X->p
-        p->L_p
-        p->R_p
-        R_p[shape=box,height=1]
-        
-        L_X[shape=box]
-        L_p[shape=box]
-        node[style=invis]
-        edge[style=invis]
-        L_X->0
-    }
-    
-    subgraph cluster2{
-        label=after
-        p2->X2
-        p2->R_p2
-        X2->L_X2
-        X2->L_p2
-        R_p2[shape=box,height=1]
-
-        L_X2[label=L_X,shape=box]
-        L_p2[label=L_p,shape=box]
-        X2[label=X]
-        p2[label=p]
-        R_p2[label=R_p]
-
-        node[style=invis]
-        edge[style=invis]
-        R_p2->02
-    }
-}
-```
+![R旋转](img/R-rot.dot.jpg)
 
 ### 失衡的恢复
 根据新插入的（导致失衡的）结点所在的结点，可以分为以下4种情况
@@ -108,26 +34,21 @@ digraph  {
 3. 插入在右子树的左子树,RL
 4. 插入在右子树的右子树,RR
 
-```graphviz
-digraph  {
-    X->left
-    X->right
-    node[style=dashed]
-    edge[style=dashed]
-    left->LL
-    left->LR
-    right->RL
-    right->RR
-}
-```
+![](img/insertion.dot.jpg)
 
 四种情况所对应的调整方式为
 
 |失衡|调整|
 |--|--|
-|LL|L旋转|
+|LL|R旋转|
 |LR|L-R旋转|
 |RL|R-L旋转|
-|RR|R旋转|
+|RR|L旋转|
 
 其中L-R旋转表示先L旋转再R旋转，R-L旋转同理
+
+### 举例
+
+如图，插入结点1后，该树在LL插入后失衡，进行一次R旋转重新平衡，其中X表示5的父结点，可以为任意树或空树
+
+![](img/LL.dot.jpg)
