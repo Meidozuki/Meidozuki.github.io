@@ -29,3 +29,6 @@ callouts:
   warning:
     title: Warning
     color: red
+
+plugins:
+  - jekyll-graphviz
