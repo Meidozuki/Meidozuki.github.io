@@ -1,9 +1,10 @@
 ---
 layout: page
 permalink: /3/
+title: 3-1-二叉树
 ---
 
-# 3-树
+# 3-二叉树
 
 {: .warning }
 > 虽然直接使用裸指针写起来很方便，但在正式项目中，为了避免内存泄漏，至少应该用std::unique_ptr管理内存  
