@@ -25,9 +25,9 @@
 
 接下来我们介绍3种简单排序，它们的代码量都在10行左右甚至更少（也可能出现在中学的信息课本中）。分别是冒泡排序、选择排序、插入排序
 
-下面以python语法的伪代码描述排序算法，C++实现见osrt.cpp
+下面以python语法的伪代码描述排序算法，C++实现见sort.cpp
 
-## 冒泡排序
+## 冒泡排序BubbleSort
 
 ```python
 @loop_n_times # 循环重复n次
@@ -37,11 +37,14 @@ def f():
             swap()
 ```
 
-冒泡排序过程中，每一趟会交换出最大值到右边，并且沿途也可能会发生交换
+冒泡排序的特征：每一趟会交换出最大值到右边，并且沿途也可能会发生交换
 
-最差情况为原本即为逆序排列，这时每一趟相当于仅把最左边的元素“搬运”到最右边，比较次数=$\Theta(n^2)$
+最差情况为原本即为逆序排列，这时每一趟相当于仅把最左边的元素“搬运”到最右边，比较次数= $\Theta(n^2)$
 
-## 选择排序
+效率低，被[wiki](https://en.wikipedia.org/wiki/Sorting_algorithm)评价为
+> Bubble sort, and variants such as the Comb sort and cocktail sort, are simple, highly inefficient sorting algorithms. They are frequently seen in introductory texts due to ease of analysis, but they are rarely used in practice.
+
+## 选择排序SelectionSort
 
 ```python
 for i in range(0,n):
@@ -52,13 +55,13 @@ for i in range(0,n):
 
 选择排序每次仅在当前无序序列中选择一个最值（最大值/最小值）放到两端（最右边/最左边）
 
-最差情况也为原本即为逆序排列，比较次数=$\Theta(n^2)$
+最差情况也为原本即为逆序排列，比较次数= $\Theta(n^2)$
 
 选择排序由于每次仅交换一个最大值，对于其他位置，不改变局部单调性。
 
 选择排序推荐在数据类型$time(Copy) \gt time(Compare)$时使用
 
-## 插入排序
+## 插入排序InsertionSort
 
 ```python
 for i in range(1,n):
@@ -69,7 +72,7 @@ for i in range(1,n):
 
 插入排序每次将有序序列长度扩大1，即对于a[i]，在插入后a[0]-a[i]都是有序的。对于新加入的元素a[i]，小于它的元素不动，大于它的元素右移一格，然后插入a[i]。该过程如同扑克牌插入牌一样因此称为插入排序
 
-最差情况也为原本即为逆序排列，比较次数=$\Theta(n^2)$
+最差情况也为原本即为逆序排列，比较次数= $\Theta(n^2)$
 
 插入排序利用了局部有序性，因此可以在子序列比较时提前停止。每次插入时相当于一次改进的冒泡算法，在a[i]左边只有比较没有交换，相比于冒泡排序减少了比较次数。
 
@@ -88,12 +91,12 @@ for i in range(1,n):
 
 3种简单排序算法的平均时间复杂度都为$\Theta(n^2)$，接下来我们来探究如何进一步优化排序算法
 
-选择排序在使用堆优化寻找最值后，时间复杂度为$\Theta (nlogn)$  
-插入排序在使用了叫做希尔增量的技巧后，时间复杂度可以减少到$O(n^{1.5})$甚至更低，但时间复杂度分析很复杂  
-冒泡排序使用了一种分而治之的思想后，平均时间复杂度可以为$\Theta(nlogn)$，但本身时间复杂度$\omicron(n^2)$  
-将分而治之的想法贯彻到底，我们得到了归并排序，时间复杂度为$\Theta (nlogn)$
+- 插入排序在使用了叫做希尔增量的技巧后，时间复杂度可以减少到 $O(n^{1.5})$ 甚至更低，但时间复杂度分析很复杂（冒泡排序也可以使用这种方法，称为梳子排序）  
+- 选择排序在使用堆优化寻找最值后，时间复杂度为 $\Theta (nlogn)$  
+- 使用了一种分而治之的思想，先分别排序左半边和右半边，然后合并左右段，就得到了归并排序，时间复杂度为 $\Theta (nlogn)$
+- 一种被称为快速排序的算法，基于交换排序，使用了分而治之的思想，平均时间复杂度可以为 $\Theta(nlogn)$ ，但本身时间复杂度 $\omicron(n^2)$  
 
-## 堆排序
+## 堆排序HeapSort
 
 先看选择排序
 
@@ -114,10 +117,10 @@ for i in range(0,n):
 
 由于堆在出堆时，会将最大元素移动到末尾，因此只需要稍微改动下出堆的代码就完成了原位生成(In-place)的堆排序，代码见sort.cpp
 
-由于建堆需要$O(n)$时间，每次调整需要$O(logn)$时间，调整n次，可得堆排序$T(n)=O(nlogn)$。最好情况下省去了建堆时间可得$T(n)= \Omega(nlogn)$。因此堆排序的时间复杂度为$\Theta (nlogn)$
+由于建堆需要 $O(n)$ 时间，每次调整需要$O(logn)$时间，调整n次，可得堆排序 $T(n)=O(nlogn)$ 。最好情况下省去了建堆时间可得 $T(n)= \Omega(nlogn)$ 。因此堆排序的时间复杂度为 $\Theta(nlogn)$
 
 
-## 希尔排序
+## 希尔排序ShellSort
 
 ```python
 increasement = [1,3,7] # ... 
@@ -127,19 +130,50 @@ for d in increasement: # 对于从大到小的每一个增量
         insert_sort(a[i::d])
 ```
 
-希尔排序算法的时间复杂度不仅与待排序序列有关，还与增长序列的选取有关，希尔排序的平均复杂度分析极为复杂，希尔排序的最差时间复杂度为$O(n^{1.3})$~$O(n^2)$
+希尔排序算法的时间复杂度不仅与待排序序列有关，还与增长序列的选取有关，希尔排序的平均复杂度分析极为复杂，希尔排序的最差时间复杂度为 $O(n^{1.3})$~$O(n^2)$
 
 Shell增量序列，即希尔排序在1959年刚发明时提出
 
-Hibbard增量序列在1963年提出，其通项为$a_n=2^k -1$，即$1,3,7,15,31,...$，可以证明采用Hibbard增量的希尔排序具有$T(n)=O(n^{3/2})$。根据[wikiwand](https://www.wikiwand.com/en/Shellsort#Gap_sequences)，在实际场景中，希尔排序的平均时间复杂度为$O(n^{5/4})$
+Hibbard增量序列在1963年提出，其通项为 $a_n=2^k -1$ ，即 $1,3,7,15,31,...$ ，可以证明采用Hibbard增量的希尔排序具有 $T(n)=O(n^{3/2})$ 。根据[wikiwand](https://www.wikiwand.com/en/Shellsort#Gap_sequences)，在实际场景中，希尔排序的平均时间复杂度为 $O(n^{5/4})$
 
-此外，根据[wikiwand](https://www.wikiwand.com/en/Shellsort)，具有长度为p的增量序列的希尔排序，对N个元素进行排序时，其平均时间复杂度具有下界：当$p\le log_2N$时，$\Omega(pN^{1+1/p})$；当$p\gt log_2N$时，$\Omega(pN)$。即希尔排序可以达到近似$NlogN$的时间复杂度
+此外，根据[wikiwand](https://www.wikiwand.com/en/Shellsort)，具有长度为p的增量序列的希尔排序，对N个元素进行排序时，其平均时间复杂度具有下界：当 $p\le log_2N$ 时, $\Omega(pN^{1+1/p})$ ；当$p\gt log_2N$时, $\Omega(pN)$ 。即希尔排序可以达到近似 $NlogN$ 的时间复杂度。并且目前已知的所有希尔排序的平均时间复杂度和最好时间复杂度同阶
 
+## 归并排序MergeSort
 
-## 归并排序
+```python
+def merge_sort(begin,end,n):
+    if (n < threshold): # 当小于某个值（比如2）的时候停止递归
+        simple_sort(begin,end,n) # （比如2）只剩1个元素则直接返回，剩2个元素的时候进行比较，然后返回
+    else: # 递归排序
+        mid = begin + n//2
+        merge_sort(begin,mid,n//2) # 递归排序左半边
+        merge_sort(mid,end,n - n//2) # 递归排序右半边
 
-## 快速排序
+        # 将有序段[begin,mid)和[mid,end)合并
+        merge(begin,end,mid)
+```
 
-## 通用排序算法的$nlogn$下界
+> 此处可以看到python代码和C++代码差别已经很小了，但为了精简篇幅，我们忽略大括号和变量类型  
+> ps: 此处的begin和end既可以是下标(如int)，也可以是随机读取迭代器(如std::vector\<int>::iterator)
+
+归并排序由于其对于左半段和右半段进行的合并操作(merge)而得名
+
+时间复杂度和堆排序一样为 $\Theta(nlogn)$
+
+## 快速排序QuickSort
+
+```python
+def quick_sort(begin,end):
+    if (n < threshold): # 当小于某个值（比如10）的时候停止递归
+        simple_sort(begin,end,n) # 进行简单排序，如插入排序
+    else: # 递归排序
+        pivot = pick() # 选择pivot
+        mid = partition(begin,end,pivot) # 将序列划分为比pivot的小的左半边和比pivot大的右半边
+        quick(begin,mid) # 递归排序左半边
+        # 注意与归并不同的地方，此处mid是pivot的最终位置
+        quick(mid+1,end) # 递归排序右半边
+```
+
+## 通用排序算法的 $nlogn$ 下界
 
 ## 基数排序

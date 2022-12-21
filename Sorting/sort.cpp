@@ -1,84 +1,42 @@
-#include <cassert>
+#include <vector>
 
 using DType = int;
 using Array = std::vector<DType>;
 
-void bubble(Array &a) {
-    const int n = a.size();
-    for (int i=0;i < n;++i) {
-        for (int j=1;j < n;++j) {
-            if (a[j] < a[j-1]) {
-                std::swap(a[j-1],a[j]);
-            }
+void heapAdjust(int idx, Array& a, int n = -1) {
+    if (n == -1) n=a.size();
+    if (idx >= n)
+        return;
+
+    while (idx*2 < n) {
+        //选择子结点中较大的
+        const int left = idx*2, right = idx*2 + 1;
+        int child = left;
+        if (right < n && a[right] > a[left]) {
+            child = right;
+        }
+
+        if (a[idx] < a[child]) {
+            std::swap(a[idx],a[child]);
+            idx = child;
+        }
+        else {
+            break;
         }
     }
 }
 
-void bubbleMend(Array &a) {
-    const int n = a.size();
-    int last, upper=n;
-    for (int i=0;i < n;++i) {
-        for (int j=1;j < upper;++j) {
-            if (a[j] < a[j-1]) {
-                std::swap(a[j-1],a[j]);
-                last=j;
-            }
-        }
-        upper=last;
+void heapSortInplace(Array &a) {
+    int n = a.size();
+
+    //建堆
+    for (int i = n/2-1;i >= 0;--i) {
+        heapAdjust(i,a);
     }
-}
 
-void insert(Array &a) {
-    const int n = a.size();
-    for (int i=1;i < n;++i) {
-        int temp = a[i];
-        int j;
-        for (j=i;j > 0;--j) {
-            if (a[j-1] > temp) {
-                a[j]=a[j-1];
-            }
-            else
-                break;
-        }
-        a[j]=temp;
-    }
-}
-
-void select(Array &a) {
-    const int n = a.size();
-    for (int i=0;i < n;++i) {
-        int maxv = a[0];
-        int maxid=0;
-        for (int j=0;j < n-i;++j) {
-            if (a[j] > maxv) {
-                maxv=a[j];
-                maxid=j;
-            }
-        }
-        std::swap(a[n-1-i],a[maxid]);
-    }
-}
-
-void selectMend(Array &a) {
-    const int n = a.size();
-    for (int i=0;i < n/2;++i) {
-        int maxv = a[0], minv = a[n-1];
-        int maxid = 0, minid = n-1;
-        for (int j=i;j < n-i;++j) {
-            if (a[j] < minv) {
-                minv=a[j];
-                minid=j;
-            }
-            else if (a[j] > maxv) {
-                maxv=a[j];
-                maxid=j;
-            }
-        }
-
-        assert(maxid != minid);
-        std::swap(a[i],a[minid]);
-        if (i == maxid) maxid=minid;
-        std::swap(a[n-1-i],a[maxid]);
-
+    //堆排序
+    for (int i = n;i > 0;--i) {
+        std::swap(a[0],a[i-1]);
+        heapAdjust(0,a,i-1);
     }
 }

@@ -3,6 +3,7 @@
 #include <functional>
 #include <map>
 
+#include "simple_sort.cpp"
 #include "sort.cpp"
 
 using SortFn = std::function<void(Array&)>;
@@ -35,11 +36,12 @@ void bench(const SortFn &sortF, bool bTest=false);
 int main (void) {
 
 
-    bench(bubble);
-    bench(bubbleMend);
-    bench(select);
-    bench(selectMend);
-    bench(insert);
+//    bench(bubble);
+//    bench(bubbleMend);
+//    bench(select);
+//    bench(selectMend);
+//    bench(insert);
+    bench(heapSortInplace,true);
 
 }
 
