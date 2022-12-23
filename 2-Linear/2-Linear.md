@@ -1,5 +1,7 @@
 ---
 layout: page
+title: 2-Linear
+has_children: true
 permalink: /2/
 ---
 

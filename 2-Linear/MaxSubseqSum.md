@@ -2,6 +2,7 @@
 layout: page
 permalink: /2+/
 title: 2-*最大子列和
+parent: 2-Linear
 ---
 
 # 最大子列和问题

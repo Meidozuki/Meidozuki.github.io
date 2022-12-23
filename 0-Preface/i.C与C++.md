@@ -1,7 +1,8 @@
 ---
 layout: page
-permalink: /i/
-title: '0-i. C and C++'
+permalink: /0/i/
+title: 'i. C and C++'
+parent: 0-Preface
 ---
 
 # I. C and C++

@@ -1,7 +1,8 @@
 ---
 layout: page
-permalink: /ii/
-title: '0-ii. C++基础语法'
+permalink: /0/ii/
+title: 'ii. C++基础语法'
+parent: 0-Preface
 ---
 
 # ii. New to C++
@@ -17,7 +18,16 @@ title: '0-ii. C++基础语法'
 
 ### 编译器
 
+Windows: MinGW, MSVC, Clang
+
+Unix: GCC
+
 ### IDE
+
+- DevC++(很老，自带MinGW)
+- CLion(功能全，巨无霸，收费)
+- VS(不推荐，自带MSVC)
+- VSCode(体积小，免费)
 
 ## hello world
 ```cpp

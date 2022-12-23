@@ -7,7 +7,16 @@ permalink: /1/
 
 ## 什么是STL
 
-Standard Template Library
+Standard Template Library, 简称STL, 中文又叫标准库。
+
+前言中提到的内置类型是由C++语言直接定义的。而标准库还定义了另外一些具有更高级性质的类型，它们尚未直接实现到计算机硬件中。
+
+使用标准库类型，需要使用类似`std::cin`的形式访问命名空间std中的名字cin。可以使用using声明来避免每次都加上前缀（如std::），如接下来要介绍的string类型  
+```cpp
+#include <string>
+using std::string;
+```  
+或者使用using指示`using namespace std;`
 
 ## 标准库类型string
 
