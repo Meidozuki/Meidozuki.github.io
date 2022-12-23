@@ -1,6 +1,22 @@
+<head>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+            }
+        });
+    </script>
+</head>
+
 # 排序
+{: .no_toc}
+1. TOC  
+{:toc}
 
 ### 交换
+{: .no_toc}
 
 交换变量a,b有以下方法
 
@@ -22,6 +38,7 @@
 以下排序均用std::swap来进行交换。由于升序和降序排序没有本质区别且易相互转换，以下以升序排序为例。
 
 ### 3种简单排序
+{: .no_toc}
 
 接下来我们介绍3种简单排序，它们的代码量都在10行左右甚至更少（也可能出现在中学的信息课本中）。分别是冒泡排序、选择排序、插入排序
 
@@ -79,6 +96,7 @@ for i in range(1,n):
 插入排序在简单数据的实际测试中是3种简单排序算法中相对高效的。
 
 ## 简单排序算法的分析
+{: .no_toc}
 
 {: .highlight}
 > 本节可略过
@@ -88,6 +106,7 @@ for i in range(1,n):
 将待排序视为一个排列(permutation)，其最大的逆序数为$1+2+3+...+n-1={n^2+n \over 2}$，平均逆序数为${n^2+n \over 4}$。而一次相邻元素的交换只能使逆序数-1，因此平均需要${n^2+n \over 4}=\Theta(n^2)$次比较
 
 ### 进一步的排序算法
+{: .no_toc}
 
 3种简单排序算法的平均时间复杂度都为$\Theta(n^2)$，接下来我们来探究如何进一步优化排序算法
 

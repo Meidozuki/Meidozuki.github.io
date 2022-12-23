@@ -1,16 +1,26 @@
 # fixed
-lsi: false
-safe: true
-incremental: false
-highlighter: rouge
-gist:
-  noscript: false
-kramdown:
-  math_engine: mathjax
-  syntax_highlighter: rouge
+# lsi: false
+# safe: true
+# incremental: false
+# highlighter: rouge
+# gist:
+#   noscript: false
+# kramdown:
+#   math_engine: mathjax
+#   syntax_highlighter: rouge
 
 # theme
 remote_theme: just-the-docs/just-the-docs
+
+kramdown:
+  math_engine: mathjax
+  math_engine_opts: {
+    tex2jax: {
+        inlineMath: [ ['$','$'] ],
+        displayMath: [ ['$$','$$'] ],
+        processEscapes: true,
+     }
+  }
 
 # from just-the-dooc
 callouts_level: quiet # or loud
@@ -29,6 +39,3 @@ callouts:
   warning:
     title: Warning
     color: red
-
-plugins:
-  - jekyll-graphviz
