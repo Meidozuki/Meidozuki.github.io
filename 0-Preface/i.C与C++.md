@@ -11,7 +11,7 @@ parent: 0-Preface
 
 C++语法上和C很像，面向过程编程部分和C十分相像，同时C++也允许使用<stdio.h>或<cstdio>等头文件保持兼容性
 
-如，C中的<stdbool.h>可以在C++11-17中使用<cstdbool>，不过这个头文件在C++20去除了
+如，C中的<stdbool.h>可以在C++11-17中使用\<cstdbool>，不过这个头文件在C++20去除了
 
 详细可以查看 https://en.cppreference.com/w/cpp/standard_library
 

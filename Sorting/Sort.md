@@ -1,3 +1,6 @@
+---
+---
+
 <head>
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="text/x-mathjax-config">
@@ -177,7 +180,9 @@ def merge_sort(begin,end,n):
 
 归并排序由于其对于左半段和右半段进行的合并操作(merge)而得名
 
-时间复杂度和堆排序一样为 $\Theta(nlogn)$
+时间复杂度和堆排序一样为 $\Theta(nlogn)$，需要额外的 $O(n)$空间来存储merge的结果
+
+在本机跑出的结果大约比堆排序快一倍。但由于归并排序需要额外复制，不建议在copy-heavy的情况下使用
 
 ## 快速排序QuickSort
 
@@ -193,6 +198,46 @@ def quick_sort(begin,end):
         quick(mid+1,end) # 递归排序右半边
 ```
 
+### pivot的选择
+{: .no_toc}
+
+1. 随机选择一个元素，在大多数情况下表现不错
+2. 选择头或尾，在逆序情况下退化为 $O(n^2)$
+3. 选择left,right,mid中间大的元素，常用
+
+可以用if-else分支也可以像以下这样
+```cpp
+inline int pickPivot(int a,int b,int c,const int *p) {
+    int max, min;
+    if (p[a] < p[b]) {
+        max = b;
+        min = a;
+    }
+    else {
+        max = a;
+        min = b;
+    }
+
+    if (p[c] > p[max]) {
+        max = c;
+    }
+    else if (p[c] < p[min]) {
+        min = c;
+    }
+
+    return a+b+c-max-min;
+}
+```
+
+### 分割方法
+{: .no_toc}
+
+用pLeft和pRight指向最左和最后，pLeft遇到大的元素停下来，pRight遇到小的元素停下来，交换，继续下一轮直到pLeft > pRight
+
 ## 通用排序算法的 $nlogn$ 下界
+
+二叉决策树
+
+任何一种基于比较的排序算法至少需要 $\Theta(nlog n)$ 时间
 
 ## 基数排序

@@ -59,6 +59,20 @@ void select(Array &a) {
     }
 }
 
+void selectFn(int *a,int n) {
+    for (int i=0;i < n;++i) {
+        int maxv = a[0];
+        int maxid=0;
+        for (int j=0;j < n-i;++j) {
+            if (a[j] > maxv) {
+                maxv=a[j];
+                maxid=j;
+            }
+        }
+        std::swap(a[n-1-i],a[maxid]);
+    }
+}
+
 void selectMend(Array &a) {
     const int n = a.size();
     for (int i=0;i < n/2;++i) {
