@@ -109,7 +109,7 @@ struct Node{
 
 当我们定义了二叉树这个结构后，一个自然而然的问题是我们如何访问其中的结点。我们称访问二叉树中所有的结点为遍历(traversal)
 
-先序遍历，中序遍历，后序遍历都可以用下面的递归模板实现
+*先序遍历，中序遍历，后序遍历*都可以用下面的递归模板实现
 
 ```cpp
 #define PREORDER
@@ -132,7 +132,7 @@ void someorderTraverse(Node *BT,FUNCTION visit) {
 ```
 
 {: .note}
-> 这里借用了函数式编程的思想，将visit函数作为参数传入。这里可以简单地无视它，并认为定义过了一个全局函数`RETURN_TYPE visit(Node *node)`。对于有C语言基础的读者，可以认为这里的visit是一个函数指针，并且`using FUNCTION = RETURN_TYPE(Node*);`。或者认为这是`std::function<RETURN_TYPE(Node*)>`
+> 这里借用了函数式编程的思想，将visit函数作为参数传入。这里可以简单地无视它，并认为定义过了一个全局函数`RETURN_TYPE visit(Node *node)`。对于有C语言基础的读者，可以认为这里的visit是一个函数指针，并且`using FUNCTION = RETURN_TYPE(Node*);`。或者认为这是`std::function<RETURN_TYPE(Node*)>`(C++11)
 
 不要被上面的预处理宏吓到。以先序遍历为例，在经过C语言预处理器（如gcc -E）之后，你就可以得到
 
@@ -148,6 +148,27 @@ void someorderTraverse(Node *BT,FUNCTION visit) {
 }
 ```
 
-层序遍历
+也可以借由stack实现非递归算法啊
+
+*层序遍历*是指，每一次先遍历深度相同的所有结点，称为一层(level)。就相当于按照顺序存储的下标，从小到大访问结点。如下图
+
+![](img/levelorder.dot.jpg)
+
+层序遍历常用queue来实现
+
+```cpp
+void levelorderTraverse(Node *BT,FUNCTION visit) {
+    std::queue<Node*> Q;
+
+    if (BT) Q.push(BT);
+    while (!Q.empty()) {
+        Node *p=Q.front();
+        Q.pop();
+        visit(p);
+        if (p->left)  Q.push(Q->left);
+        if (p->right) Q.push(Q->right);
+    }
+}
+```
 
 ## 二叉搜索树(BST) *ADT*

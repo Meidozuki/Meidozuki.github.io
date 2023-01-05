@@ -1,4 +1,4 @@
-digraph  {
+digraph {
     label=R_Rotatioin
     ranksep=0.25
     subgraph cluster{

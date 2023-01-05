@@ -1,7 +1,7 @@
 #!/bin/bash
 fnames=$(ls */img/*.dot)
-echo $fnames
 
 for name in $fnames; do
+  echo $name
   dot -O -Tjpg $name
 done

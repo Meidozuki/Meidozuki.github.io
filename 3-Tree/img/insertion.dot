@@ -1,4 +1,4 @@
-digraph  {
+digraph {
     X->left
     X->right
     node[style=dashed]

@@ -1,4 +1,4 @@
-digraph  {
+digraph {
     subgraph cluster{
         label=empty
         null[style=invis]

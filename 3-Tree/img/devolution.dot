@@ -1,10 +1,10 @@
-digraph  {
+digraph {
     node[style=invis]
     ranksep = 0.2
     01
     02
     03
-    node[style=none]
+    node[style=solid]
     1->2->3->4
     edge[style=invis]
     1->01
