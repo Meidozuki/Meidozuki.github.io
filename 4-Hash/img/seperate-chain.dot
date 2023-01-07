@@ -1,0 +1,13 @@
+digraph {
+    rankdir=LR;
+    {
+        rank=same
+        6,5,4,3,2,1,0[shape=rectangle]
+    }
+    1->k1->50->57
+    k1[label=1]
+    0->7
+    6->13
+    5->40->12->75
+    k1,50,57,40,12,75,13,7[style=dashed]
+}

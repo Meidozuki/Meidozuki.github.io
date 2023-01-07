@@ -25,7 +25,7 @@
 5. 堆/优先队列
 6. 森林
 7. 图
-8. [排序](/sort/)
+8. [排序](/sort/) ([View in github](Sorting/Sort.md))
 
 ## 参考资料
 

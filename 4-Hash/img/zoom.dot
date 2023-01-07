@@ -2,11 +2,10 @@ digraph {
     rankdir=LR;
     {
         rank=same
-        8[label="8..."]
-        7,6,5,4,3,2,1,0[shape=rectangle]
+        3[label="3..."]
+        2,1,0[shape=rectangle]
     }
     1->k1
     k1[label=1]
     2->50
-    5->40
 }
