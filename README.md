@@ -9,23 +9,23 @@
 ## 目录（计划中）
 
 0. 写在前面的  
-    1. [C与C++](/0/i/)
-    2. [C++基础语法](/0/ii/)
+    1. [C与C++](/0-Preface/i.C与C++.md)
+    2. [C++基础语法](/0-Preface/ii.C++基础语法.md)
 
-1. [C++给我们的处理问题的武器——STL初识](/1/)
-2. [线性结构](/2/)  
+1. [C++给我们的处理问题的武器——STL初识](/1-STL/1-STL.md)
+2. [线性结构](/2-Linear/2-Linear.md)  
     1. 栈
     2. 队列
     3. 链表
-3. [树](/3/)  
-    1. 二叉树
-    2. 平衡二叉树
+3. 树  
+    1. [二叉树](/3-Tree/3-BinaryTree.md)
+    2. [平衡二叉树](/3-Tree/BalancedTree.md)
     3. Huffman树
-4. [散列](/4/)
+4. [散列](/4-Hash/4-Hash.md)
 5. 堆/优先队列
 6. 森林
 7. 图
-8. [排序](/sort/) ([View in github](Sorting/Sort.md))
+8. [排序](/sort/) (本页面的公式显示有些问题，推荐[View in github](https://github.com/Meidozuki/Meidozuki.github.io/blob/main/Sorting/Sort.md))
 
 ## 参考资料
 
