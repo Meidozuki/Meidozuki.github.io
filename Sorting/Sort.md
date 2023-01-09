@@ -1,6 +1,9 @@
 ---
 layout: page
+title: 排序
+has_children: false
 permalink: /sort/
+nav_exclude: false
 ---
 
 <head>
@@ -108,7 +111,7 @@ for i in range(1,n):
 
 基于邻位比较算法（冒泡和插入）的最差时间复杂度不会低于 $\Theta(n^2)$
 
-将待排序视为一个排列(permutation)，其最大的逆序数为 $1+2+3+...+n-1={n^2+n \over 2}$，平均逆序数为 ${n^2+n \over 4}$。而一次相邻元素的交换只能使逆序数-1，因此平均需要 ${n^2+n \over 4}=\Theta(n^2)$次比较
+将待排序视为一个排列(permutation)，其最大的逆序数为 $1+2+3+...+n-1={n^2+n \over 2}$，平均逆序数为 ${n^2+n \over 4}$。而一次相邻元素的交换只能使逆序数-1，因此平均需要 ${n^2+n \over 4}=\Theta(n^2)$ 次比较
 
 ### 进一步的排序算法
 {: .no_toc}
@@ -141,7 +144,7 @@ for i in range(0,n):
 
 由于堆在出堆时，会将最大元素移动到末尾，因此只需要稍微改动下出堆的代码就完成了原位生成(In-place)的堆排序，代码见sort.cpp
 
-由于建堆需要 $O(n)$ 时间，每次调整需要 $O(logn)$时间，调整n次，可得堆排序 $T(n)=O(nlogn)$ 。最好情况下省去了建堆时间可得 $T(n)= \Omega(nlogn)$ 。因此堆排序的时间复杂度为 $\Theta(nlogn)$
+由于建堆需要 $O(n)$ 时间，每次调整需要 $O(logn)$ 时间，调整n次，可得堆排序 $T(n)=O(nlogn)$ 。最好情况下省去了建堆时间可得 $T(n)= \Omega(nlogn)$ 。因此堆排序的时间复杂度为 $\Theta(nlogn)$
 
 
 ## 希尔排序ShellSort
@@ -182,7 +185,7 @@ def merge_sort(begin,end,n):
 
 归并排序由于其对于左半段和右半段进行的合并操作(merge)而得名
 
-时间复杂度和堆排序一样为 $\Theta(nlogn)$，需要额外的 $O(n)$空间来存储merge的结果
+时间复杂度和堆排序一样为 $\Theta(nlogn)$，需要额外的 $O(n)$ 空间来存储merge的结果
 
 在本机跑出的结果大约比堆排序快一倍。但由于归并排序需要额外复制，不建议在copy-heavy的情况下使用
 
