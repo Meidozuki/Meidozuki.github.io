@@ -1,19 +1,11 @@
+---
+layout: page
+title: 图Graph
+permalink: /6-1/
+parent: 6-Graph
+---
+
 # 图Graph
-
-本章我们将从CodinGame的一次event——[KeepOffTheGrass](https://github.com/CodinGame/FallChallenge2022-KeepOffTheGrass)导入，来讲一些图算法
-
-
-<img src="img/Board.png" width="70%"></img>
-
-整体上来说，我们需要操控机器人去占领方块，最终占领方块多的一方获胜。你可以消耗资源造新机器人，也可以建造回收机获取资源，但是回收机所在的格子无法通过，更具体的规则见[规则书](CodinGame%202022Fall%20Rule.pdf)
-
-又例如，如果我们遇到了这么一种情况
-
-<img src="img/Component.png" width="70%"></img>
-
-这时棋盘被分成了许多种情况，由于机器人无法越过绿色草地，对于不同区域（我们称为连通分量）的策略是不同的。比如，如果某个区域已经都被自己占领了，就不应该在上面继续造机器人；如果某个区域只有自己占领的方块和未被占领的方块，就应该让机器人去占领全部方块，等等。这时就需要用到图相关的算法
-
-## 图
 
 {: .note}
 > 不同教材对于图的术语的定义很不同。为了减轻记忆负担，这里采用《DSA in C》的版本，称顶点不重复的路径为简单路径。在一些教材（和wiki）中，你可能会见到它们各自对应的是通路(walk)和路径(path)
@@ -23,7 +15,7 @@
 图的概念*非常多*，下面列了一些即将会遇到的概念。初学时如果一下子记不住这么多，可以先跳过，等遇到了再回来查看
 
 1. 如果顶点对 $v,w$ 是有序的，那么称这个图是**有向的**，否则是**无向的**。有向图的边又被称为**弧(arc)**
-2. 两个顶点 $v,w$是**邻接的(adjacent)**，当且仅当 $(v,w)\in E$
+2. 两个顶点 $v,w$ 是**邻接的(adjacent)**，当且仅当 $(v,w)\in E$
 3. 有些边除了两个端点外，还会有另一个属性**权重(weight)**
 4. 图中的一条**路径(path)** 是指一个顶点序列 $w_1,w_2,w_3,...,w_n \ s.t. (w_i,w_{i+1})\in E\ for\ 1\le i\le n$，即只能经过图中的边，不能跨边走。如果一条路径中（除了首尾外）的顶点各不相同，则称这是一条**简单路径(simple path)**
 5. 如果图中包含一条长度为0，起点和终点都是 $v$ 的路径，则称这条路径为**自环(loop)**
@@ -31,12 +23,9 @@
 7. **有向无环图(Directed Acylic Graph, DAG)**：没有环的有向图
 8. 对于无向图，如果对于每一个顶点，都存在一条通往其他顶点的路径，则称它是**连通的(connected)**
 9. 对于有向图，如果它具有上面一条的性质，则称它是**强连通的**。如果一个有向图不是强连通的，但是去掉边的箭头后剩下的图（基图）是连通的，则称它是**弱连通的**
-10. 如果一个图 $G$ 的子图 $G'$ 也是连通的，则称 $G'$ 为 $G$ 的**连通子图**。如果 $G'$ 再添加任意一个 $G'$ 中没有的顶点，都不是连通的，那么称 $G'$ 是 $G$ 的**极大连通子图**，或者叫**连通分量**。或者说，如果一张图像是多个分离的岛屿组成的，每一个岛屿都是一个连通分量。
-
-
+10. 如果一个图 $G$ 的子图 $G'$ 也是连通的，则称 $G'$ 为 $G$ 的**连通子图**。如果 $G'$ 再添加任意一个 $G'$ 中没有的顶点，都不是连通的，那么称 $G'$ 是 $G$ 的**极大连通子图**，或者叫**连通分量**。或者说，如果一张图像是多个分离的岛屿组成的，每一个岛屿都是一个连通分量  
 <img src="img/%E8%A5%BF%E6%B2%99%E7%BE%A4%E5%B2%9B.jpg" width="50%"></img>
 > "我国南海西沙群岛 图片来源https://www.zhihu.com/question/398721880"
-10. a
 
 
 
@@ -108,8 +97,10 @@ void DFS(int V, int nV, int **G, vector<bool> &visited) {
     visit(V);
     visited[V] = true; //缺少该句会无穷递归
     for (int i=0;i < nV;++i) {
-        if (G[V][i] && !visited[i]) {
-            DFS(i,nV,G,visited);
+        //如果还未访问过邻接顶点
+        if (G[V][i]) {
+            if (!visited[i])
+                DFS(i,nV,G,visited); //递归访问
         }
     }
 }
@@ -120,7 +111,9 @@ void DFS(int V, int nV, int **G, vector<bool> &visited) {
 
 ### 广度优先遍历
 
-如果你看过一种神奇的黏菌走迷宫的视频的话，你可以注意到在资源充足的情况下，它采用的方式就是广度优先遍历（Broad First Search, BFS）
+与DFS不同，迷宫中广度优先遍历（Breadth First Search, BFS）的策略是，每次遍历下一步可以走的所有可能性（不走回头路）。一般来说，在初期BFS的选项越来越多，越走越宽，所以称为广度优先，相应的，需要的存储存储空间会增大
+
+如果你看过一种神奇的黏菌走迷宫的[视频](https://www.bilibili.com/video/BV1bU4y1F7rF)的话，你可以注意到在资源充足的情况下，它采用的方式就是BFS
 
 
 ```cpp
@@ -130,17 +123,39 @@ using Index = int;
 struct Graph;
 Function visit;
 
-void BFS(int V, Graph &G) {
+void BFS(Graph &G) {
     int nV = G.num_V;
+    //由于nV不确定，使用变长的vector
+    vector<bool> visited(nV);
 
-    for (int v=0;v < nV;++v)
+    for (int v=0;v < nV;++v) {
+        ////从单源出发BFS
+        if (visited[v])
+            continue;
 
-    visit(V);
-    visited[V] = true;
-    for (int i=0;i < nV;++i) {
-        if (G[V][i] && !visited[i]) {
-            DFS(i,nV,G,visited);
+        //前面的章节讲过queue了，这里直接用STL，省去具体实现
+        queue<Index> Q;
+        Q.push(v);
+        while(!Q.empty()) {
+            Index V = Q.top(); //获得队首
+            visit(V);
+            visited[V] = true;
+            for (int i=0;i < nV;++i) {
+                //如果还未访问过邻接顶点
+                if (G->adjacent[V][i]) {
+                    if (!visited[i])
+                        Q.push(i); //入队
+                }
+            }
+            Q.pop(); //更新队首指针
         }
     }
+
 }
 ```
+
+DFS和BFS并无绝对好坏之分，你可以构造一个最深路径很长，通关路径比较短的迷宫，这种情况下DFS表现较差；你也可以构造最深路径和通关路径差不多长，但是分支很多的迷宫，这种情况下两者性能差不多但是BFS比较耗内存
+
+### DFS/BFS的连通性
+
+一次DFS/BFS会访问完一个连通分量，从直觉上说，一次DFS/BFS访问了一个顶点能访问的所有顶点，这也很合理。因此可以通过DFS/BFS测试图的连通性。一次遍历之后如果有未访问的顶点（visited未全部为true），则说明该图不是连通的；可以通过所需要的DFS/BFS次数确定图的连通分量数，等等

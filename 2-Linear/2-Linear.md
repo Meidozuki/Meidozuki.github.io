@@ -7,6 +7,8 @@ permalink: /2/
 
 # 2-线性结构
 
+对于我们为什么要学数据结构与算法分析，可以看[最大子列和](MaxSubseqSum.md)的例子
+
 ## ADT 逻辑结构和物理结构
 
 ## 数组
@@ -55,10 +57,20 @@ int pop(vector<int> &s) {
     s.pop_back();
     return t;
 }
+//以下为上面的lambda表达式代码，除了第一行的函数声明外，两者一模一样
+auto pop = [&s] () {
+    int t = s.back();
+    s.pop_back();
+    return t;
+};
 ```
-此外由于vector动态分配大小，在push_back时和静态数组不同，可以省去检查栈满。同时由于stack在尾部操作，vector动态实现足够高效  
-也可以用原生数组和静态vector实现，它们的代码写法十分类似  
-原生数组和静态vector实现见stack.cpp
+
+{: .note}
+> 函数pop接收一个vector\<int>&，返回int。vector\<int>为上一节讲过的STL可变数组，其成员类型为int。`&`为C++特性，表示引用。你可以暂时认为`&`的作用是让你能够通过`.`而不是`->`调用成员函数
+
+此外由于vector动态分配大小，在push_back时和静态数组不同，可以省去检查栈满。同时由于stack在尾部操作，vector动态实现足够高效
+
+也可以用原生数组和静态vector实现，它们的代码写法十分类似。原生数组和静态vector实现见[stack](stack.cpp)
 
 ## 队列queue
 
@@ -99,11 +111,11 @@ void queue_static() {
         std::cout << dequeue(Q,front,rear) << ' ';
     }
     std::cout << '\n';
-
 }
 ```
+
 由于queue同时在头部和尾部操作，而vector在头部操作时性能较低，因此推荐用静态数组实现  
-原生vector实现见queue.cpp
+使用vector的实现见[queue](queue.cpp)
 
 ## 链表list
 

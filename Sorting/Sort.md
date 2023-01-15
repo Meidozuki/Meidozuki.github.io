@@ -50,7 +50,7 @@ nav_exclude: false
 
 接下来我们介绍3种简单排序，它们的代码量都在10行左右甚至更少（也可能出现在中学的信息课本中）。分别是冒泡排序、选择排序、插入排序
 
-下面以python语法的伪代码描述排序算法，C++实现见simple_sort.cpp
+下面以python语法的伪代码描述排序算法，C++实现见[此处](simple_sort.cpp)
 
 ## 冒泡排序BubbleSort
 
@@ -123,9 +123,11 @@ for i in range(1,n):
 - 使用了一种分而治之的思想，先分别排序左半边和右半边，然后合并左右段，就得到了归并排序，时间复杂度为 $\Theta (nlogn)$
 - 一种被称为快速排序的算法，基于交换排序，使用了分而治之的思想，平均时间复杂度可以为 $\Theta(nlogn)$ ，但本身时间复杂度 $\omicron(n^2)$  
 
+C++实现见[此处](sort.cpp)
+
 ## 堆排序HeapSort
 
-先看选择排序
+回顾选择排序
 
 ```python
 for i in range(0,n):
@@ -211,6 +213,11 @@ def quick_sort(begin,end):
 3. 选择left,right,mid中间大的元素，常用
 
 可以用if-else分支也可以像以下这样
+
+<details>
+<summary>展开查看代码
+</summary><br>
+<pre><code>
 ```cpp
 inline int pickPivot(int a,int b,int c,const int *p) {
     int max, min;
@@ -232,7 +239,8 @@ inline int pickPivot(int a,int b,int c,const int *p) {
 
     return a+b+c-max-min;
 }
-```
+</code></pre>
+</details>
 
 ### 分割方法
 {: .no_toc}
