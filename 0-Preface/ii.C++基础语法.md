@@ -18,9 +18,9 @@ parent: 0-Preface
 
 ### 编译器
 
-Windows: MinGW, MSVC, Clang
+Windows: MinGW, MSVC, Clang...
 
-Unix: GCC
+Unix: GCC...
 
 ### IDE
 
@@ -43,13 +43,48 @@ int main()
 
 ## 变量
 
-### 内置变量类型
+### 基本内置类型
 
-1. bool
-2. char
-3. int
-4. float
-5. double
+- void
+- bool
+- 整数类型(interger types)
+[signed/unsigned]
+
+| type | 最少bits |Win64|Linux64|
+| -- | -- | -- | -- |
+|char|8|
+|short int|16|
+|int|16|32|32|
+|long int|32|32|64|
+|long long int<br>(since C++11)|64|64|64|
+
+- float
+- double
+- long double
+
+### 复合类型
+
+- 引用
+
+{: .note}
+> C++11增加一种引用——右值引用，我们这里指的引用实际上是左值引用
+>
+引用实际上是一种别名，将引用和它的初始量**绑定**在一起
+
+```cpp
+int ival=1024;
+int &ref_val = ival; //声明引用
+// int &ref_val2; //编译错误，引用必须被初始化
+int &ref_val3 = ref_val; //将ref3绑定到ref所绑定的对象上，等价于int &ref_val3 = ival;
+
+cout << ival << endl;
+// Output: 1024
+ref_val = 2; //对引用的操作等价于对它绑定的对象进行操作
+cout << ival << endl;
+// Output: 2
+```
+
+- 指针
 
 ## 函数
 

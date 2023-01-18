@@ -34,5 +34,5 @@
 .idea
 cmake-build-*
 graph.dot
-main.cpp
+/main.cpp
 *.zip

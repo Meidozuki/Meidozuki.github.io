@@ -66,7 +66,7 @@ auto pop = [&s] () {
 ```
 
 {: .note}
-> 函数pop接收一个vector\<int>&，返回int。vector\<int>为上一节讲过的STL可变数组，其成员类型为int。`&`为C++特性，表示引用。你可以暂时认为`&`的作用是让你能够通过`.`而不是`->`调用成员函数
+> 函数pop接收一个vector\<int>&，返回int。vector\<int>为上一节讲过的STL可变数组，其成员类型为int。`&`为C++特性，表示引用，在[前言](../0-Preface/ii.C++基础语法.md)中提到过，可以认为引用创建了一个别名
 
 此外由于vector动态分配大小，在push_back时和静态数组不同，可以省去检查栈满。同时由于stack在尾部操作，vector动态实现足够高效
 
