@@ -1,8 +1,8 @@
 ---
 layout: page
-title: 排序
+title: 7-排序
 has_children: false
-permalink: /sort/
+permalink: /7/
 nav_exclude: false
 ---
 

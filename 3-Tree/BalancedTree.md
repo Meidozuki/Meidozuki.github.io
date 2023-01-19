@@ -2,6 +2,7 @@
 layout: page
 permalink: /3+/
 title: '3-1-*平衡二叉树'
+parent: 3-二叉树
 ---
 # 二叉树进阶
 

@@ -1,9 +1,10 @@
 ---
 layout: page
 permalink: /1/
+title: 1-初识STL
 ---
 
-# 1-初识STL
+# 1-初识STL——字符串和数组
 
 ## 什么是STL
 
@@ -63,7 +64,7 @@ operator == != < <= > >=    //按照字典顺序对字符进行比较
 
 ## 标准库类型vector
 
-std::vector是STL提供的一种表示对象的集合，集合中每个对象都有个与之对应的索引，索引用于访问对象。vector也常被称作容器
+std::vector是STL提供的一种表示对象的集合，集合中每个对象都有个与之对应的索引，索引用于访问对象。vector更确切地来说应该叫动态数组或者变长数组。vector也常被称作容器
 
 使用vector需要包含头文件
 ```cpp
@@ -75,7 +76,7 @@ vector<int> ivec;
 其中int指明vector所包含的元素，即ivec保存int类型的对象。（这种带<>的方式称为模板，我们可以暂时不管它的语法）
 
 {: .note }
-> C++11新标准正式允许写形如vector<vector<int>>的数组的数组，但在C++11之前或在一些老版本编译器上（比如DevCpp）应该在> >间添加空格表示和流操作运算符>>区分
+> C++11新标准正式允许写形如vector\<vector\<int>>的数组，但在C++11之前或在一些老版本编译器上（比如DevCpp）应该在> >间添加空格表示和流操作运算符>>区分
 
 vector的初始化
 ```cpp
@@ -130,7 +131,7 @@ for (int idx = 0;idx < v.size();++idx) {
 
 > 建议：性能高，但需要提前确定长度。用于快速背模板，多维数组等
 
-2. std::vector
+2. std::vector动态数组
 
 ```
 #include <vector>
@@ -138,7 +139,7 @@ std::vector<int> a;
 ```
 > 建议：较为通用，在数组大小可变时替代array
 
-3. C++ std::array
+3. C++ std::array静态数组
 
 ```
 #include <array>

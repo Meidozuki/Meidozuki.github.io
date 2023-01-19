@@ -1,7 +1,8 @@
 ---
 layout: page
+title: 3-二叉树
 permalink: /3/
-title: 3-1-二叉树
+has_children: true
 ---
 
 # 3-二叉树

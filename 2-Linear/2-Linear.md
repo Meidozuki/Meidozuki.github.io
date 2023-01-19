@@ -1,8 +1,8 @@
 ---
 layout: page
 title: 2-Linear
-has_children: true
 permalink: /2/
+has_children: true
 ---
 
 # 2-线性结构
