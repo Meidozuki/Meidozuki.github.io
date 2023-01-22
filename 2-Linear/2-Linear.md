@@ -7,26 +7,53 @@ has_children: true
 
 # 2-线性结构
 
-对于我们为什么要学数据结构与算法分析，可以看[最大子列和](MaxSubseqSum.md)的例子
-
-## ADT 逻辑结构和物理结构
-
-## 数组
-
 上一节我们讲了数组，数组的插入和删除可以发生在任何位置
 我们将下标为0的这一头称为头部front，另一头称为尾部back。
 栈插入和删除都只能发生在尾部（栈顶），队列只能在尾部插入和头部删除。进一步的，如果同时允许在头部和尾部进行插入和删除，称为双端队列(double-ended queue, deque)
 
+对于我们为什么要学数据结构与算法分析，可以看[最大子列和](MaxSubseqSum.md)的例子
+
+## ADT
+
+抽象数据类型(Abstact Data Type,ADT)是一种抽象，将一系列相关的操作抽象到一组操作中，如将stack的push和pop操作抽象。ADT的定义不依赖具体的实现。我们可以见下面的例子
+
 ## 栈stack
 
-栈插入和删除都只能发生在尾部，完成了push和pop函数就可以认为是一个栈了
+栈是一种插入(push)和删除(pop)都只能发生在尾部的线性结构，一种用C++定义的ADT如下
 
-栈的常见操作
+```cpp
+template<typename T, typename Container>
+struct Stack {
+    Container data_;
+
+    bool empty();
+    size_t size();
+    void push(T );
+    T /* 或void */ pop();
+}
+```
+
+template<>为一种称为泛型编程的技术。使用template可以更方便地根据需要实例化出不同的类。比如，使用上述的`Stack<int,vector<int>>`等价于如下代码（同时假设size较小，可以用int表示）
+
+```cpp
+struct Stack {
+    vector<int> data_;
+
+    bool empty();
+    int size();
+    void push(int );
+    int /* 或void */ pop();
+}
+```
+
+栈的ADT声明了栈的常见操作
 
 1. push
 2. pop
 3. size
 4. empty
+
+下面是使用vector<int>对于上述ADT的一种实现。（下述代码使用了面向过程的思想，复用性较差。提高复用性可以见[最后一节](#代码封装-struct和class)（用了lambda表达式其实是函数式编程思想，不过下面有解释））
 
 ```cpp
 void stack_dynamic() {
@@ -64,6 +91,8 @@ auto pop = [&s] () {
     return t;
 };
 ```
+
+（由此可见C++编程的自由度非常高）
 
 {: .note}
 > 函数pop接收一个vector\<int>&，返回int。vector\<int>为上一节讲过的STL可变数组，其成员类型为int。`&`为C++特性，表示引用，在[前言](../0-Preface/ii.C++基础语法.md)中提到过，可以认为引用创建了一个别名
@@ -177,6 +206,20 @@ int main(void) {
         std::cout << pop() << ' ';
     }
     std::cout << '\n';
+}
+```
+
+这样看起来就很像stack的ADT定义了
+
+
+```cpp
+struct Stack {
+    vector<int> data_;
+
+    bool empty();
+    size_t size();
+    void push(int );
+    int /* 或void */ pop();
 }
 ```
 
